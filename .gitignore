@@ -1,0 +1,23 @@
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+/config/local_settings.py
+/media
+
+# C extensions
+*.so
+
+# Translations
+*.mo
+
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
