@@ -6,9 +6,25 @@
         {% for image in object_list %}
             <div class="col-4">
                 <div class="card" >
-                    <img class="card-img-top" src="{{ image.image_thumbnail.url }}" alt="Card image cap">
+                    <a href="{{ image.image.url }}" target="_blank"><img class="card-img-top" src="{{ image.image_thumbnail.url }}" alt="Card image cap"></a>
                     <div class="card-body">
                         <h5 class="card-title text-center">{{ image.title }}</h5>
+                        <div class="card-text">
+                            <ul class="list-group">
+{#                            {% for key, exif in image.exif.items %}#}
+{#                                <li class="list-group-item">{{ exif.desc }} - {{ exif.val }}</li>#}
+{#                            {% endfor %}#}
+                                {% if image.exif.Model %}
+                                <li class="list-group-item">Производитель и модель камеры: {{ image.exif.Model.val }}</li>
+                                {% endif %}
+                                {% if image.exif.CreateDate %}
+                                <li class="list-group-item">Дата создания фото (из EXIF): {{ image.exif.CreateDate.val }}</li>
+                                {% endif %}
+                                <li class="list-group-item">Размер файла: {{ image.image.file.size }} byte</li>
+
+                                <li class="list-group-item">Дата загрузки фото:{{ image.created_at }}</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

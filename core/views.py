@@ -29,6 +29,7 @@ class ImageCreateView(CreateView):
         return super(ImageCreateView, self).dispatch(*args, **kwargs)
 
     def post(self, request, *args, **kwargs):
+        print(request.POST)
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
